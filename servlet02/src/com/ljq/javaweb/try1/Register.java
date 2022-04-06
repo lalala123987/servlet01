@@ -39,12 +39,9 @@ public class Register extends HttpServlet {
             response.sendError(403,"检测到爬虫");
             SpiderState = 1;
         }
-
         if (SpiderState==0){
-
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-
             if (username.length() > 255) {
                 response.setContentType("text/html");
                 PrintWriter out = response.getWriter();
@@ -79,10 +76,6 @@ public class Register extends HttpServlet {
                     PrintWriter out = response.getWriter();
                     out.print("<br><h1 style=\"text-align:center;font-size:2.5em;\">配置文件出错，请检查配置文件</h1>");
                 }
-
-
-
-
             }
         }
     }
