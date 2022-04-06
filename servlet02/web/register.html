@@ -2,53 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>register</title>
-    <style>
-        .button {
-            -webkit-transition-duration: 0.4s;
-            transition-duration: 0.4s;
-            border-radius: 10px;
-            width: 8%;
-        }
-
-        .button:hover {
-            background-color: slategrey;
-            color: white;
-            border-radius: 10px;
-            width: 8%;
-        }
-    </style>
+    <title>Sign up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/register.css">
+    <script src="js/register.js"></script>
 </head>
-<body style="text-align:center; font-size:100%">
+<body>
+<!--
 <h1 style="text-align:center;font-size:2.5em;">用户注册</h1><br><br>
 <form action="/servlet02/register" onsubmit="return check()" method="post" style="text-align:center;">
     账号:<input type="text" id="username" name="username" onkeyup="this.value=this.value.replace(/[, ]/g,'')" required="required" autofocus="autofocus" style="text-align:center;font-size: 1.6em;"><br><br><br>
     密码:<input type="text" id="password" name="password" onkeyup="this.value=this.value.replace(/[, ]/g,'')" required="required" style="text-align:center;font-size: 1.6em;"><br><br><br>
     <button type="submit" name="bt_register" style="text-align:center;font-size: 2em;" class="button">提交</button>
 </form>
-<script>
-    function check() {
-        var username = document.getElementById("username").value;
-        if (username.length<=2){
-            alert("用户名过短，请重新输入！");
-            return false;
-        }
-        else if (username.length>255){
-            alert("用户名过长，请重新输入！");
-            return false;
-        }
-        else{
-            var password =document.getElementById("password").value;
-            if (password.length<6){
-                alert("密码过短，请重新输入！");
-                return false;
-            }
-            else if (password.length>255){
-                alert("密码过长，请重新输入！");
-                return false;
-            }
-        }
-    }
-</script>
+-->
+<div class="container">
+    <div class="login-wrapper">
+        <div class="header">Sign up</div>
+        <div class="form-wrapper">
+            <form action="/servlet02/register" onsubmit="check()" method="post">
+                <input type="text"     id="username" name="username" placeholder="username" class="input-item" onkeyup="this.value=this.value.replace(/[, ]/g,'')" required="required" autofocus="autofocus">
+                <input type="password" id="password" name="password" placeholder="password" class="input-item" onkeyup="this.value=this.value.replace(/[, ]/g,'')" required="required">
+                <button type="submit" name="bt_register" class="btn">Sign up</button>
+            </form>
+        </div>
+        <div class="msg">
+            <a href="login.html">Login in</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>

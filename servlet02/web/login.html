@@ -5,26 +5,17 @@
     <title>login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
+    <script src="js/login.js"></script>
 </head>
 <body>
-<!--
- style="text-align:center; font-size:100%;"
-<h1 style="text-align:center;font-size:2.5em;">用户登录</h1><br><br>
-<form action="/servlet02/login" onsubmit="check()" method="post" style="text-align:center;">
-    账号:<input type="text" id="username" onkeyup="this.value=this.value.replace(/[, ]/g,'')" name="username" required="required" autofocus="autofocus" style="text-align:center;font-size: 1.6em;"><br><br><br>
-    密码:<input type="text" id="password" onkeyup="this.value=this.value.replace(/[, ]/g,'')" name="password" required="required" style="text-align:center;font-size: 1.6em;"><br><br><br>
-    <button type="submit" name="bt_login" style="text-align:center;font-size: 2em;" class="button">提交</button>
-</form>
--->
-
 <div class="container">
     <div class="login-wrapper">
-        <div class="header">Login</div>
+        <div class="header">Login in</div>
         <div class="form-wrapper">
             <form action="/servlet02/login" onsubmit="check()" method="post">
                 <input type="text"     id="username" name="username" placeholder="username" class="input-item" onkeyup="this.value=this.value.replace(/[, ]/g,'')" required="required" autofocus="autofocus">
                 <input type="password" id="password" name="password" placeholder="password" class="input-item" onkeyup="this.value=this.value.replace(/[, ]/g,'')" required="required">
-                <button type="submit" name="bt_login" class="btn">Login</button>
+                <button type="submit" name="bt_login" class="btn">Login in</button>
             </form>
         </div>
         <div class="msg">
@@ -32,29 +23,5 @@
         </div>
     </div>
 </div>
-<script>
-    function check() {
-        var username = document.getElementById("username").value;
-        if (username.length<=2){
-            alert("用户名过短，请重新输入！");
-            return false;
-        }
-        else if (username.length>255){
-            alert("用户名过长，请重新输入！");
-            return false;
-        }
-        else{
-            var password =document.getElementById("password").value;
-            if (password.length<6){
-                alert("密码过短，请重新输入！");
-                return false;
-            }
-            else if (password.length>255){
-                alert("密码过长，请重新输入！");
-                return false;
-            }
-        }
-    }
-</script>
 </body>
 </html>

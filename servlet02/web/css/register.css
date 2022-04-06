@@ -78,10 +78,6 @@ body {
     font-size: 1em;
 }
 
-.login-wrapper .form-wrapper .btn::after{
-    border: none;
-}
-
 .login-wrapper .msg {
     text-align: center;
     line-height: 80px;
