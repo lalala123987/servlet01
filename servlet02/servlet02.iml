@@ -21,6 +21,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="attoparser-2.0.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" name="thymeleaf-3.0.15.RELEASE" level="project" />
+    <orderEntry type="library" name="thymeleaf-3.0.15.RELEASE (2)" level="project" />
     <orderEntry type="library" name="servlet-api" level="project" />
   </component>
 </module>
