@@ -58,14 +58,10 @@ public class Login extends HttpServlet {
                         PrintWriter out = response.getWriter();
                         out.print("<br><h1 style=\"text-align:center;font-size:2.5em;\">登录成功</h1>");
                     } else {
-                        response.setContentType("text/html");
-                        PrintWriter out = response.getWriter();
-                        out.print("<br><h1 style=\"text-align:center;font-size:2.5em;\">密码错误</h1>");
+                        response.sendRedirect("wrongpassword.html"); //重定向到密码错误页面
                     }
                 } else {
-                    response.setContentType("text/html");
-                    PrintWriter out = response.getWriter();
-                    out.print("<br><h1 style=\"text-align:center;font-size:2.5em;\">账号有误，请重新输入</h1>");
+                    response.sendRedirect("wrongusername.html"); //重定向到账号错误页面
                 }
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();

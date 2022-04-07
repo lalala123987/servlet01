@@ -47,13 +47,9 @@ public class Register extends HttpServlet {
                 PrintWriter out = response.getWriter();
                 out.print("<br><h1 style=\"text-align:center;font-size:2.5em;\">账号过长，请重新输入</h1>");
             } else if (username.length() <= 2) {
-                response.setContentType("text/html");
-                PrintWriter out = response.getWriter();
-                out.print("<br><h1 style=\"text-align:center;font-size:2.5em;\">账号过短，请重新输入</h1>");
+                response.sendRedirect("register.html");
             } else if (password.length() < 6) {
-                response.setContentType("text/html");
-                PrintWriter out = response.getWriter();
-                out.print("<br><h1 style=\"text-align:center;font-size:2.5em;\">密码过短，请重新输入</h1>");
+                response.sendRedirect("register.html");
             } else if (password.length() > 255) {
                 response.setContentType("text/html");
                 PrintWriter out = response.getWriter();
@@ -63,14 +59,12 @@ public class Register extends HttpServlet {
                 try {
                     String path = this.getServletContext().getRealPath("/WEB-INF/classes/DB_Info.properties");
                     DB_Write try01 = new DB_Write(username, password, path);
-                    response.setContentType("text/html");
-                    PrintWriter out = response.getWriter();
                     register_state = try01.write();
                     switch (register_state) {
-                        case 0 -> out.print("<br><h1 style=\"text-align:center;font-size:2.5em;\">出错了</h1>");
-                        case 1 -> out.print("<br><h1 style=\"text-align:center;font-size:2.5em;\">用户名已存在，请重新输入</h1>");
-                        case 2 -> out.print("<body style=\"text-align:center; font-size:100%;\"><br><h1 style=\"text-align:center;font-size:2.5em;\">注册成功</h1><br><br><a href=\"login.html\"><button autofocus=\"autofocus\" style=\"text-align:center;font-size: 2em;\" class=\"button\">用户登录</button></a><br></body>");
-                        case 3 -> out.print("<br><h1 style=\"text-align:center;font-size:2.5em;\">注册失败</h1>");
+                        case 0 -> response.sendRedirect("ServerError.html");
+                        case 1 -> response.sendRedirect("UsernameExist.html");
+                        case 2 -> response.sendRedirect("SignUpSuccess.html");
+                        case 3 -> response.sendRedirect("SignUpFail.html");
                     }
                 } catch (Exception e) {
                     PrintWriter out = response.getWriter();
