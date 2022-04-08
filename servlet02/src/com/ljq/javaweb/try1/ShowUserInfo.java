@@ -26,15 +26,10 @@ public class ShowUserInfo extends ViewBaseServlet {
                         e.printStackTrace();
                     }
                     super.processTemplate("UserInfo",request,response);
-                    System.out.println("arrive");
                 }
                 else { //TODO:实际已登录用户也无法到达此界面，因为需要通过SUI的渲染
-                    System.out.println("Username"+session.getAttribute("username"));
-                    System.out.println("getUN:"+request.getParameter("username"));
                     if (session.getAttribute("username").equals(request.getParameter("username"))){
-                        System.out.println("10");
                         super.processTemplate("UserInfo",request,response);
-                        System.out.println("arrive");
                     }
                     else response.sendRedirect("403.html");
                 }
