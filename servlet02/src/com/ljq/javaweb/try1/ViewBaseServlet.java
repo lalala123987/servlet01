@@ -57,7 +57,7 @@ public class ViewBaseServlet extends HttpServlet {
 
     }
 
-    protected void processTemplate(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void processTemplate(String templateName, HttpServletRequest req, HttpServletResponse resp) throws IOException {
         // 1.设置响应体内容类型和字符集
         resp.setContentType("text/html;charset=UTF-8");
 
@@ -65,6 +65,6 @@ public class ViewBaseServlet extends HttpServlet {
         WebContext webContext = new WebContext(req, resp, getServletContext());
 
         // 3.处理模板数据
-        templateEngine.process("userpage", webContext, resp.getWriter());
+        templateEngine.process(templateName, webContext, resp.getWriter());
     }
 }

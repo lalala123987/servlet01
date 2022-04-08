@@ -6,13 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Base64;
-import java.util.ResourceBundle;
 
 
 
@@ -25,14 +22,14 @@ public class Login extends HttpServlet {
             User_Agent_Check uAC = new User_Agent_Check(request.getHeader("user-agent"));
             Referer_Check RC = new Referer_Check(request.getHeader("referer"),"/servlet02/login.html");
             if (uAC.check()){
-                response.sendError(403,"禁止访问");//user_agent
+                response.sendRedirect("403.html");//user_agent
                 SpiderState = 1;
             } else if (RC.check()){
-                response.sendError(403,"禁止访问");//referer
+                response.sendRedirect("403.html");//referer
                 SpiderState = 1;
             }
         } catch (NullPointerException e) {
-            response.sendError(403,"禁止访问");
+            response.sendRedirect("403.html");
             SpiderState = 1;
         }
         if (SpiderState==0) {
@@ -54,20 +51,14 @@ public class Login extends HttpServlet {
                     ps.setString(2, password);
                     rs = ps.executeQuery();
                     if (rs.next()) {
-
                         HttpSession session = request.getSession() ;
-                        System.out.println("1:"+session.getId());
                         if (!session.isNew()){  //如果session不是新的，那么失效上一个session并再次创建
                             session.invalidate();
-                            System.out.println("2"+session.getId());
                             session = request.getSession() ;
-                            System.out.println("3:"+session.getId());
                         }
-                        System.out.println("4:"+session.getAttribute("username"));
                         session.setMaxInactiveInterval(60);//session时长设置为5分钟
                         session.setAttribute("username",username);
-                        System.out.println("5:"+session.getId());
-                        //response.sendRedirect("userpage.html");
+                        //response.sendRedirect("SUI");
                         request.getRequestDispatcher("SUI").forward(request,response);
                     } else {
                         response.sendRedirect("wrongpassword.html"); //重定向到密码错误页面
