@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/register.css">
+    <script src="js/register.js"></script>
+</head>
+<body>
+<!--
+<h1 style="text-align:center;font-size:2.5em;">用户注册</h1><br><br>
+<form action="/servlet02/register" onsubmit="return check()" method="post" style="text-align:center;">
+    账号:<input type="text" id="username" name="username" onkeyup="this.value=this.value.replace(/[, ]/g,'')" required="required" autofocus="autofocus" style="text-align:center;font-size: 1.6em;"><br><br><br>
+    密码:<input type="text" id="password" name="password" onkeyup="this.value=this.value.replace(/[, ]/g,'')" required="required" style="text-align:center;font-size: 1.6em;"><br><br><br>
+    <button type="submit" name="bt_register" style="text-align:center;font-size: 2em;" class="button">提交</button>
+</form>
+-->
+<div class="container">
+    <div class="login-wrapper">
+        <div class="header">Sign up</div>
+        <div class="form-wrapper">
+            <form action="/servlet02/register" onsubmit="check()" method="post">
+                <input type="text"     id="username" name="username" placeholder="username" class="input-item" onkeyup="this.value=this.value.replace(/[, ]/g,'')" required="required" autofocus="autofocus">
+                <input type="password" id="password" name="password" placeholder="password" class="input-item" onkeyup="this.value=this.value.replace(/[, ]/g,'')" required="required">
+                <button type="submit" name="bt_register" class="btn">Sign up</button>
+            </form>
+        </div>
+        <div class="msg">
+            <a href="login.html">Login in</a><br>
+            <a href="index.html">Back</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
