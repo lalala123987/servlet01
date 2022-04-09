@@ -1,7 +1,10 @@
 package com.ljq.javaweb.try1;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Username_Check {
     String username;
@@ -20,7 +23,6 @@ public class Username_Check {
         ResultSet rs = null;
 
         try {
-
             DB_Connect connect = new DB_Connect();
             conn = connect.connect(path);
             String sql = "SELECT * FROM userinfo WHERE UserName=?;";

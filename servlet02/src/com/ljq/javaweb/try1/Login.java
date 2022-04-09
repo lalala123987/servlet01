@@ -16,15 +16,16 @@ import java.sql.SQLException;
 public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         int SpiderState = 0;
         try {
             User_Agent_Check uAC = new User_Agent_Check(request.getHeader("user-agent"));
-            Referer_Check RC = new Referer_Check(request.getHeader("referer"),"/servlet02/login.html");
-            if (uAC.check()){
+            Referer_Check RC = new Referer_Check(request.getHeader("referer"), "/servlet02/login.html");
+            if (uAC.check()) {
                 response.sendRedirect("403.html");//user_agent
                 SpiderState = 1;
-            } else if (RC.check()){
+            } else if (RC.check()) {
                 response.sendRedirect("403.html");//referer
                 SpiderState = 1;
             }
