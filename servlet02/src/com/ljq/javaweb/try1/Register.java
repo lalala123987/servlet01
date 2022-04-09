@@ -11,16 +11,16 @@ public class Register extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         int SpiderState = 0;
         try {
             User_Agent_Check uAC = new User_Agent_Check(request.getHeader("user-agent"));
-            Referer_Check RC = new Referer_Check(request.getHeader("referer"),"/servlet02/register.html");
-            if (uAC.check()){
+            Referer_Check RC = new Referer_Check(request.getHeader("referer"), "/servlet02/register.html");
+            if (uAC.check()) {
                 response.sendRedirect("403.html");
                 SpiderState = 1;
-            }
-            else if (RC.check()){
+            } else if (RC.check()) {
                 response.sendRedirect("403.html");
                 SpiderState = 1;
             }
