@@ -53,15 +53,15 @@ public class Login extends HttpServlet {
                     ps.setString(2, password);
                     rs = ps.executeQuery();
                     if (rs.next()) {
-                        HttpSession session = request.getSession() ;
-                        if (!session.isNew()){  //如果session不是新的，那么失效上一个session并再次创建
+                        HttpSession session = request.getSession();
+                        if (!session.isNew()) {  //如果session不是新的，那么失效上一个session并再次创建
                             session.invalidate();//TODO 此方法只是删除ID属性值，未真正删除ID，尚不知会不会有问题
                             session = request.getSession();
                         }
                         session.setMaxInactiveInterval(60);//session时长设置为5分钟
-                        session.setAttribute("username",username);
-                        //response.sendRedirect("SUI");
-                        request.getRequestDispatcher("SUI").forward(request,response);
+                        session.setAttribute("username", username);
+                        response.sendRedirect("SUI");
+                        //request.getRequestDispatcher("SUI").forward(request,response);
                     } else {
                         response.sendRedirect("wrongpassword.html"); //重定向到密码错误页面
                     }
