@@ -37,7 +37,7 @@ body {
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-    line-height: 200px;
+    line-height: 150px;
 }
 
 .login-wrapper .form-wrapper .input-item {
@@ -62,8 +62,8 @@ body {
     text-align: center;
     padding: 15px;
     width: 100%;
-    margin-top: 40px;
-    background-image: linear-gradient(to right, #c5f4ff,#fbc2eb);
+    margin-top: 30px;
+    background-image: linear-gradient(to right, #c5f4ff, #fbc2eb);
     font-size: 1em;
 }
 
@@ -72,9 +72,9 @@ body {
     text-align: center;
     padding: 15px;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 30px;
     background-color: slategrey;
-    background-image: linear-gradient(to right,#fbc2eb,#c5f4ff);
+    background-image: linear-gradient(to right, #fbc2eb, #c5f4ff);
     font-size: 1em;
 }
 

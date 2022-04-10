@@ -6,12 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Username_Check {
-    String username;
+public class Email_Check {
+    String email;
     String path;
 
-    public Username_Check(String username,String path) {
-        this.username = username;
+    public Email_Check(String email, String path) {
+        this.email = email;
         this.path = path;
     }
 
@@ -25,9 +25,9 @@ public class Username_Check {
         try {
             DB_Connect connect = new DB_Connect();
             conn = connect.connect(path);
-            String sql = "SELECT * FROM userinfo WHERE UserName=?;";
+            String sql = "SELECT * FROM mypan.users WHERE Email=?;";
             ps = conn.prepareStatement(sql);
-            ps.setString(1, username);
+            ps.setString(1, email);
             rs = ps.executeQuery();
             ans = rs.next();
         } catch (ClassNotFoundException | IOException e) {

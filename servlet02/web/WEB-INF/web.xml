@@ -53,4 +53,13 @@
         <servlet-name>ShowUserInfo</servlet-name>
         <url-pattern>/SUI</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Showfilepage</servlet-name>
+        <servlet-class>com.ljq.javaweb.try1.Showfilepage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Showfilepage</servlet-name>
+        <url-pattern>/SFP</url-pattern>
+    </servlet-mapping>
 </web-app>

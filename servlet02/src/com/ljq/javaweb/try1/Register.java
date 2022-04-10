@@ -31,27 +31,18 @@ public class Register extends HttpServlet {
         if (SpiderState==0){
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            if (username.length() > 255) {
-                response.setContentType("text/html");
-                PrintWriter out = response.getWriter();
-                response.sendRedirect("register.html");
-            } else if (username.length() <= 2) {
-                response.sendRedirect("register.html");
-            } else if (password.length() < 6) {
-                response.sendRedirect("register.html");
-            } else if (password.length() > 255) {
-                response.setContentType("text/html");
-                PrintWriter out = response.getWriter();
+            String email = request.getParameter("email");
+            if (username.length() > 20 || username.length() <= 2 || password.length() < 6 || password.length() > 32 || email.length() > 32) {
                 response.sendRedirect("register.html");
             } else {
                 int register_state;
                 try {
                     String path = this.getServletContext().getRealPath("/WEB-INF/classes/DB_Info.properties");
-                    DB_Write try01 = new DB_Write(username, password, path);
+                    DB_Write try01 = new DB_Write(username, password, email, path);
                     register_state = try01.write();
                     switch (register_state) {
                         case 0 -> response.sendRedirect("ServerError.html");
-                        case 1 -> response.sendRedirect("UsernameExist.html");
+                        case 1 -> response.sendRedirect("EmailExist.html");
                         case 2 -> response.sendRedirect("SignUpSuccess.html");
                         case 3 -> response.sendRedirect("SignUpFail.html");
                     }

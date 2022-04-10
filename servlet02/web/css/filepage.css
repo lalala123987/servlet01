@@ -53,67 +53,6 @@ body {
     background-color: #fcfcfc;
 }
 
-/* 删除按钮 */
-.bt_del {
-    width: 150px;
-    height: 50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
-    background: #e62222;
-}
-
-.bt_del, .bt_del span {
-    transition: 200ms;
-}
-
-.bt_del .text {
-    transform: translateX(35px);
-    color: white;
-    font-weight: bold;
-}
-
-.bt_del .icon {
-    position: absolute;
-    border-left: 1px solid #c41b1b;
-    transform: translateX(110px);
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.bt_del svg {
-    width: 15px;
-    fill: #eee;
-}
-
-.bt_del:hover {
-    background: #ff3636;
-}
-
-.bt_del:hover .text {
-    color: transparent;
-}
-
-.bt_del:hover .icon {
-    width: 150px;
-    border-left: none;
-    transform: translateX(0);
-}
-
-.bt_del:focus {
-    outline: none;
-}
-
-.bt_del:active .icon svg {
-    transform: scale(0.8);
-}
-
 /* 用户信息 */
 .msg_username {
     font-family: \22Comic Sans MS\22, sans-serif;
@@ -213,6 +152,38 @@ body {
 }
 
 .bt_logout:active {
+    transform: translateY(-1px);
+}
+
+/* 删除按钮 */
+
+.bt_delete {
+    font-family: \u5E7C\u5706, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 1% 2% 0 1%;
+    padding: 1.3em 3em;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    float: right;
+}
+
+.bt_delete:hover {
+    background-color: #e52e2e;
+    box-shadow: 0px 15px 20px rgba(229, 46, 46, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.bt_delete:active {
     transform: translateY(-1px);
 }
 

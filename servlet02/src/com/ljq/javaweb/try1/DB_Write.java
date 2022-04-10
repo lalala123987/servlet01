@@ -8,16 +8,18 @@ import java.sql.SQLException;
 public class DB_Write {
     String username;
     String password;
+    String email;
     String path;
 
-    public DB_Write(String username, String password, String path) {
+    public DB_Write(String username, String password, String email, String path) {
         this.username = username;
         this.password = password;
+        this.email = email;
         this.path = path;
     }
 
     public final int write() {
-        //如果报错，返回0；如果用户名已存在，返回1；如果注册成功，返回2；如果注册失败，返回3
+        //如果报错，返回0；如果邮箱已存在，返回1；如果注册成功，返回2；如果注册失败，返回3
         int ans = 0;
         Connection conn = null;
         PreparedStatement ps = null;
@@ -26,16 +28,18 @@ public class DB_Write {
             DB_Connect connect = new DB_Connect();
             conn = connect.connect(path);
 
-            //检查用户名是否已经存在
-            Username_Check check = new Username_Check(username, path);
+            //检查邮箱是否已经存在
+            Email_Check check = new Email_Check(email, path);
             if (check.check()) {
                 ans = 1;
             } else {
-                String sql = "INSERT IGNORE INTO userinfo (UserName,Password) VALUES (?,?);";
+                String sql = "INSERT IGNORE INTO mypan.users (name,passwd,email) VALUES (?,?,?);";
                 ps = conn.prepareStatement(sql);
 
                 ps.setString(1, username);
                 ps.setString(2, password);
+                ps.setString(3, email);
+                System.out.println(ps);
                 int count = ps.executeUpdate();
 
                 ans = (count == 1 ? 2 : 3);
