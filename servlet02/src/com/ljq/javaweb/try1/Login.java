@@ -36,6 +36,7 @@ public class Login extends HttpServlet {
         if (SpiderState==0) {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
+            //TODO 没有验证账户密码长度，尚不知有无问题
             Connection conn = null;
             PreparedStatement ps = null;
             ResultSet rs = null;
@@ -54,8 +55,8 @@ public class Login extends HttpServlet {
                     if (rs.next()) {
                         HttpSession session = request.getSession() ;
                         if (!session.isNew()){  //如果session不是新的，那么失效上一个session并再次创建
-                            session.invalidate();
-                            session = request.getSession() ;
+                            session.invalidate();//TODO 此方法只是删除ID属性值，未真正删除ID，尚不知会不会有问题
+                            session = request.getSession();
                         }
                         session.setMaxInactiveInterval(60);//session时长设置为5分钟
                         session.setAttribute("username",username);
